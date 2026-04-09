@@ -1,0 +1,36 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: auth-api
+  profiles:
+    active: default
+
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/auth_db     
+
+external:
+  iot:
+    base-url: http://104.211.95.241:8080/api
+
+iot:
+  username: testuser
+  password: 123456
+
+jwt:
+  secret: 2e0edf2454247acbc9e9eb20c126766c442b6796871ee9a964aa63e9fb4375b3
+  expiration: 3600000
+  refresh-expiration: 604800000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/
+      
+
+
+
+   

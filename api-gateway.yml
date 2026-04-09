@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: zone-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/zones/**
+
+        - id: sensor-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/sensors/**
+
+        - id: automation-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/automation/**
+
+        - id: crop-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/crops/**
+
+        - id: auth-api
+          uri: http://localhost:8085
+          predicates:
+            - Path=/auth/**,/access-token/**
+
+jwt:
+  secret: 2e0edf2454247acbc9e9eb20c126766c442b6796871ee9a964aa63e9fb4375b3
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

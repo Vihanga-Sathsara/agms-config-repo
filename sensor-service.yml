@@ -1,0 +1,37 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: sensor-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/greenhouse_sensor_db
+    username: root
+    password: Vihanga@1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+external:
+  auth:
+    base-url: http://localhost:8085
+  iot:
+    base-url: http://104.211.95.241:8080/api
+  zone:
+    base-url: http://localhost:8081
+  
+automation:
+  url: http://localhost:8083
+
+iot:
+  username: testuser
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
